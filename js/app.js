@@ -87,7 +87,7 @@ function escapeHtml(str) {
     .replace(/'/g, '&#39;');
 }
 
-function safeAttr(str) {
+function escapeAttr(str) {
   return escapeHtml(str);
 }
 

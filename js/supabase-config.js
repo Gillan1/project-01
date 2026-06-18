@@ -1,31 +1,16 @@
 /**
  * js/supabase-config.js
- * إعدادات Supabase - عدّل القيمتين التاليتين بمعلومات مشروعك من Supabase Dashboard.
+ * إعدادات Supabase - مُهيأ تلقائياً للمشروع النشط.
  *
- * كيفية الحصول على القيم:
- * 1. سجّل في https://supabase.com (مجاني)
- * 2. أنشئ مشروعاً جديداً (New Project)
- * 3. بعد الإنشاء، اذهب إلى: Project Settings → API
- * 4. انسخ:
- *    - "Project URL" → ضعه في SUPABASE_URL
- *    - "anon public" key → ضعه في SUPABASE_ANON_KEY
- *
- * ملاحظة: الـ anon key آمن لتضمينه في كود العميل (لا يمنح صلاحيات مباشرة،
+ * 🔒 الأمان: الـ anon key آمن لتضمينه في كود العميل (لا يمنح صلاحيات مباشرة،
  * كل الصلاحيات تدار عبر Row Level Security policies في SQL).
  */
 
-// ✏️ عدّل هاتين القيمتين فقط
-const SUPABASE_URL = 'https://YOUR-PROJECT-REF.supabase.co';
-const SUPABASE_ANON_KEY = 'YOUR-ANON-PUBLIC-KEY';
+const SUPABASE_URL = 'https://khgvmatuqqgpctimzcoi.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtoZ3ZtYXR1cXFncGN0aW16Y29pIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE3Mzg2NzAsImV4cCI6MjA5NzMxNDY3MH0.apsayk4Nh_sMv1LQefzK_23GL3Uj4kEu8GbBJ05frE4';
 
-// التحقق من الإعداد
-if (SUPABASE_URL.includes('YOUR-PROJECT-REF') || SUPABASE_ANON_KEY.includes('YOUR-ANON')) {
-  console.warn('⚠️ Supabase غير مُعد بعد. راجع js/supabase-config.js وREADME.md للإعداد.');
-}
-
-// تصدير للاستخدام عبر import map
 window.SUPABASE_CONFIG = {
   url: SUPABASE_URL,
   anonKey: SUPABASE_ANON_KEY,
-  isConfigured: !SUPABASE_URL.includes('YOUR-PROJECT-REF') && !SUPABASE_ANON_KEY.includes('YOUR-ANON')
+  isConfigured: true
 };

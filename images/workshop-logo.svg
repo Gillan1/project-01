@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#16213e;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#d4a843;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#c9952a;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="anvilGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#b8962e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8a6f1f;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Outer circle -->
+  <circle cx="200" cy="200" r="195" fill="url(#bgGrad)" stroke="url(#goldGrad)" stroke-width="4"/>
+  <circle cx="200" cy="200" r="185" fill="none" stroke="#d4a843" stroke-width="1.5" opacity="0.6"/>
+  
+  <!-- Anvil -->
+  <g transform="translate(200, 175)">
+    <!-- Anvil top -->
+    <rect x="-55" y="-15" width="110" height="18" rx="3" fill="url(#anvilGrad)"/>
+    <!-- Anvil horn (left) -->
+    <path d="M-55,-15 L-75,-8 L-55,3 Z" fill="#9a7d25"/>
+    <!-- Anvil body -->
+    <path d="M-40,3 L-35,45 L35,45 L40,3 Z" fill="#8a6f1f"/>
+    <!-- Anvil base -->
+    <rect x="-45" y="45" width="90" height="12" rx="2" fill="#7a6019"/>
+    <!-- Anvil feet -->
+    <rect x="-50" y="57" width="25" height="18" rx="2" fill="#6a5015"/>
+    <rect x="25" y="57" width="25" height="18" rx="2" fill="#6a5015"/>
+    <!-- Highlight on top -->
+    <rect x="-50" y="-15" width="100" height="3" rx="1" fill="#e8c84a" opacity="0.5"/>
+  </g>
+  
+  <!-- Hammer -->
+  <g transform="translate(240, 135) rotate(-45)">
+    <!-- Handle -->
+    <rect x="-3" y="0" width="6" height="55" rx="2" fill="#8B7355"/>
+    <!-- Head -->
+    <rect x="-14" y="-14" width="28" height="16" rx="3" fill="url(#anvilGrad)"/>
+    <rect x="-14" y="-14" width="28" height="3" rx="1" fill="#e8c84a" opacity="0.4"/>
+  </g>
+  
+  <!-- Sparks -->
+  <g filter="url(#glow)">
+    <line x1="170" y1="140" x2="163" y2="125" stroke="#ffd700" stroke-width="2" stroke-linecap="round"/>
+    <line x1="185" y1="135" x2="180" y2="118" stroke="#ffb800" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="200" y1="138" x2="200" y2="120" stroke="#ffd700" stroke-width="2" stroke-linecap="round"/>
+    <line x1="215" y1="140" x2="222" y2="123" stroke="#ffb800" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="230" y1="145" x2="240" y2="130" stroke="#ffd700" stroke-width="2" stroke-linecap="round"/>
+    <!-- Small spark dots -->
+    <circle cx="160" cy="122" r="2" fill="#ffd700" opacity="0.8"/>
+    <circle cx="178" cy="114" r="1.5" fill="#ffb800" opacity="0.7"/>
+    <circle cx="200" cy="116" r="2" fill="#ffd700" opacity="0.8"/>
+    <circle cx="225" cy="119" r="1.5" fill="#ffb800" opacity="0.7"/>
+    <circle cx="243" cy="127" r="2" fill="#ffd700" opacity="0.8"/>
+  </g>
+  
+  <!-- Arabic Text: ورشة عبادة للحدادة -->
+  <text x="200" y="280" text-anchor="middle" font-family="'Noto Sans SC', 'Noto Sans Arabic', Arial, sans-serif" font-size="28" font-weight="bold" fill="#d4a843" direction="rtl">ورشة عبادة للحدادة</text>
+  
+  <!-- English Text -->
+  <text x="200" y="310" text-anchor="middle" font-family="'DejaVu Sans', Arial, sans-serif" font-size="14" fill="#9a8a5a" letter-spacing="3">OBADA BLACKSMITH</text>
+  
+  <!-- Decorative line -->
+  <line x1="120" y1="320" x2="280" y2="320" stroke="#d4a843" stroke-width="0.5" opacity="0.5"/>
+  
+  <!-- Quality tag -->
+  <text x="200" y="340" text-anchor="middle" font-family="'DejaVu Sans', Arial, sans-serif" font-size="10" fill="#7a6a3a" letter-spacing="2">SINCE TRADITION</text>
+</svg>

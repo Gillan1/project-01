@@ -1,0 +1,38 @@
+# ملفات النظام
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# المحررات
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# السجلات
+*.log
+logs/
+
+# بيئة التطوير
+node_modules/
+.env
+.env.local
+.env.*.local
+
+# ملفات مؤقتة
+*.tmp
+*.bak
+*.cache
+
+# أسرار Supabase (لا تلتزم في git)
+supabase/.env
+supabase/service-role-key.txt
+
+# بيانات الاعتماد المحلية
+credentials.json
+service-account.json
+
+# التكوينات المحلية
+config.local.js
+js/supabase-config.local.js

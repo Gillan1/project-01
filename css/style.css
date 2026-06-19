@@ -248,6 +248,274 @@ body {
 }
 
 /* ==========================================
+   Sidebar Navigation (القائمة الجانبية)
+   ========================================== */
+.sidebar-toggle {
+    position: fixed;
+    top: 16px;
+    inset-inline-start: 16px;
+    z-index: 1100;
+    background: var(--bg-card);
+    border: 2px solid var(--accent);
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: var(--transition);
+}
+
+.sidebar-toggle:hover {
+    background: var(--accent);
+}
+
+.sidebar-toggle:hover .hamburger-line {
+    background: #fff;
+}
+
+.hamburger-line {
+    display: block;
+    width: 24px;
+    height: 3px;
+    background: var(--accent);
+    border-radius: 2px;
+    transition: var(--transition);
+}
+
+.app-sidebar {
+    position: fixed;
+    top: 0;
+    inset-inline-start: 0;
+    bottom: 0;
+    width: 300px;
+    max-width: 85vw;
+    background: var(--bg-card);
+    border-inline-end: 1px solid var(--border-color);
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.3);
+    z-index: 1200;
+    transform: translateX(-100%);
+    transform: translateX(calc(-100% * var(--rtl-flip, 0)));
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+/* RTL: الـ sidebar يفتح من اليمين */
+[dir="rtl"] .app-sidebar {
+    inset-inline-start: auto;
+    inset-inline-end: 0;
+    transform: translateX(100%);
+}
+
+.app-sidebar.open {
+    transform: translateX(0);
+}
+
+.sidebar-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 1150;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.sidebar-overlay.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 20px 16px;
+    border-bottom: 1px solid var(--border-color);
+    background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
+}
+
+.sidebar-logo {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    border-radius: 8px;
+    flex-shrink: 0;
+}
+
+.sidebar-title {
+    flex: 1;
+    min-width: 0;
+}
+
+.sidebar-title h2 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--accent);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.sidebar-title p {
+    margin: 2px 0 0;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.sidebar-close {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 1.8rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 6px;
+    transition: var(--transition);
+    flex-shrink: 0;
+}
+
+.sidebar-close:hover {
+    background: var(--badge-bg);
+    color: var(--accent);
+}
+
+.sidebar-nav {
+    flex: 1;
+    padding: 12px 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    overflow-y: auto;
+}
+
+.sidebar-nav-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+    font-family: var(--font-primary);
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--transition);
+    text-align: start;
+    width: 100%;
+}
+
+.sidebar-nav-btn:hover {
+    background: var(--badge-bg);
+    color: var(--accent);
+    transform: translateX(2px);
+}
+
+[dir="rtl"] .sidebar-nav-btn:hover {
+    transform: translateX(-2px);
+}
+
+.sidebar-nav-btn.active {
+    background: var(--accent);
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(212, 175, 55, 0.3);
+}
+
+.nav-icon {
+    font-size: 1.2rem;
+    width: 24px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.nav-text {
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.sidebar-footer {
+    padding: 16px;
+    border-top: 1px solid var(--border-color);
+    background: var(--bg-secondary);
+}
+
+.sidebar-contact {
+    margin: 0 0 6px;
+    text-align: center;
+}
+
+.sidebar-contact a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: var(--transition);
+}
+
+.sidebar-contact a:hover {
+    text-decoration: underline;
+}
+
+.sidebar-copy {
+    margin: 0;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+}
+
+/* على الشاشات الكبيرة: الـ sidebar مثبت دائماً */
+@media (min-width: 1024px) {
+    .sidebar-toggle {
+        display: none;
+    }
+
+    .app-sidebar {
+        transform: translateX(0);
+        box-shadow: 2px 0 12px rgba(0, 0, 0, 0.15);
+        width: 260px;
+    }
+
+    .sidebar-overlay {
+        display: none !important;
+    }
+
+    .sidebar-close {
+        display: none;
+    }
+
+    /* إزاحة المحتوى لتوفير مساحة للـ sidebar */
+    body.has-sidebar {
+        padding-inline-start: 260px;
+    }
+
+    .main-header {
+        margin-inline-start: 0;
+    }
+}
+
+/* على الموبايل: الـ sidebar يطفو فوق المحتوى */
+@media (max-width: 1023px) {
+    .main-header {
+        padding-inline-start: 70px;
+    }
+}
+
+
+/* ==========================================
    Sections
    ========================================== */
 .section {

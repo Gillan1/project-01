@@ -77,6 +77,68 @@
 </head>
 <body data-theme="dark">
     <!-- Header -->
+    <!-- Sidebar Menu Button (Mobile) -->
+    <button class="sidebar-toggle" id="sidebar-toggle" aria-label="فتح القائمة" aria-expanded="false" aria-controls="app-sidebar">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+    </button>
+
+    <!-- Sidebar Overlay (Mobile) -->
+    <div class="sidebar-overlay" id="sidebar-overlay" aria-hidden="true"></div>
+
+    <!-- Sidebar Navigation -->
+    <aside class="app-sidebar" id="app-sidebar" aria-label="القائمة الجانبية">
+        <div class="sidebar-header">
+            <img src="images/logo-left.png" alt="شعار الورشة" class="sidebar-logo">
+            <div class="sidebar-title">
+                <h2>ورشة عبادة</h2>
+                <p data-i18n="subtitle">صناعة الحديد بكل احترافية وإتقان</p>
+            </div>
+            <button class="sidebar-close" id="sidebar-close" aria-label="إغلاق القائمة">&times;</button>
+        </div>
+        <nav class="sidebar-nav" role="navigation">
+            <button class="sidebar-nav-btn active" data-section="home" data-i18n="nav_home">
+                <span class="nav-icon">🏠</span>
+                <span class="nav-text">المتجر</span>
+            </button>
+            <button class="sidebar-nav-btn" data-section="orders" data-i18n="nav_orders">
+                <span class="nav-icon">🛠️</span>
+                <span class="nav-text">الطلبات والتصنيع</span>
+            </button>
+            <button class="sidebar-nav-btn" data-section="estimator" data-i18n="nav_estimator">
+                <span class="nav-icon">🧮</span>
+                <span class="nav-text">حاسبة التكلفة</span>
+            </button>
+            <button class="sidebar-nav-btn" data-section="gallery" data-i18n="nav_gallery">
+                <span class="nav-icon">🖼️</span>
+                <span class="nav-text">أعمالنا</span>
+            </button>
+            <button class="sidebar-nav-btn" data-section="faq" data-i18n="nav_faq">
+                <span class="nav-icon">❓</span>
+                <span class="nav-text">الأسئلة الشائعة</span>
+            </button>
+            <button class="sidebar-nav-btn" data-section="promotion" data-i18n="nav_promotion">
+                <span class="nav-icon">📢</span>
+                <span class="nav-text">الترويج</span>
+            </button>
+            <button class="sidebar-nav-btn" data-section="settings" data-i18n="nav_settings">
+                <span class="nav-icon">⚙️</span>
+                <span class="nav-text">الإعدادات</span>
+            </button>
+            <button class="sidebar-nav-btn" data-section="admin" data-i18n="nav_admin">
+                <span class="nav-icon">🔐</span>
+                <span class="nav-text">المسؤول</span>
+            </button>
+        </nav>
+        <div class="sidebar-footer">
+            <p class="sidebar-contact">
+                <a href="tel:+249115192500" aria-label="اتصال">📞 0115192500</a>
+            </p>
+            <p class="sidebar-copy">© 2024 ورشة عبادة</p>
+        </div>
+    </aside>
+
     <header class="main-header">
         <div class="header-content">
             <img src="images/logo-left.png" alt="شعار الورشة" class="logo logo-left">
@@ -86,16 +148,6 @@
             </div>
             <img src="images/logo-right.png" alt="شعار الورشة" class="logo logo-right">
         </div>
-        <nav class="main-nav">
-            <button class="nav-btn active" data-section="home" data-i18n="nav_home">المتجر</button>
-            <button class="nav-btn" data-section="orders" data-i18n="nav_orders">الطلبات والتصنيع</button>
-            <button class="nav-btn" data-section="estimator" data-i18n="nav_estimator">حاسبة التكلفة</button>
-            <button class="nav-btn" data-section="gallery" data-i18n="nav_gallery">أعمالنا</button>
-            <button class="nav-btn" data-section="faq" data-i18n="nav_faq">الأسئلة الشائعة</button>
-            <button class="nav-btn" data-section="promotion" data-i18n="nav_promotion">الترويج</button>
-            <button class="nav-btn" data-section="settings" data-i18n="nav_settings">الإعدادات</button>
-            <button class="nav-btn" data-section="admin" data-i18n="nav_admin">المسؤول</button>
-        </nav>
     </header>
 
     <!-- Hero Banner -->

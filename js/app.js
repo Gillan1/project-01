@@ -1413,25 +1413,110 @@ function toggleFaq(btn) {
 
 // ============ التنقل ============
 function setupNavigation() {
-  const navBtns = document.querySelectorAll('.nav-btn');
+  // دعم أزرار الـ nav القديمة والـ sidebar الجديد
+  const navBtns = document.querySelectorAll('.nav-btn, .sidebar-nav-btn');
+
+  const handleNavClick = (btn) => {
+    const section = btn.dataset.section;
+    if (!section) return;
+    // إزالة active من جميع أزرار الـ nav (القديمة والجديدة)
+    document.querySelectorAll('.nav-btn, .sidebar-nav-btn').forEach(b => b.classList.remove('active'));
+    // إضافة active لكل زر يحمل نفس data-section (في القائمتين إن وُجدتا)
+    document.querySelectorAll(`.nav-btn[data-section="${section}"], .sidebar-nav-btn[data-section="${section}"]`).forEach(b => b.classList.add('active'));
+    // إظهار القسم
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    const target = document.getElementById(section);
+    if (target) target.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // إغلاق الـ sidebar على الموبايل بعد الاختيار
+    closeSidebar();
+  };
+
   navBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const section = btn.dataset.section;
-      if (!section) return;
-      // إزالة active من الجميع
-      navBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      // إظهار القسم
-      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-      const target = document.getElementById(section);
-      if (target) target.classList.add('active');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+    btn.addEventListener('click', () => handleNavClick(btn));
+  });
+
+  // إعداد الـ sidebar للجوال
+  setupSidebar();
+}
+
+// ============ إدارة الـ Sidebar على الموبايل ============
+function setupSidebar() {
+  const sidebar = document.getElementById('app-sidebar');
+  const toggle = document.getElementById('sidebar-toggle');
+  const overlay = document.getElementById('sidebar-overlay');
+  const closeBtn = document.getElementById('sidebar-close');
+
+  if (!sidebar || !toggle || !overlay) return;
+
+  // إضافة has-sidebar للـ body على الشاشات الكبيرة
+  const mq = window.matchMedia('(min-width: 1024px)');
+  const updateBodyClass = () => {
+    if (mq.matches) {
+      document.body.classList.add('has-sidebar');
+    } else {
+      document.body.classList.remove('has-sidebar');
+    }
+  };
+  updateBodyClass();
+  mq.addEventListener('change', updateBodyClass);
+
+  // فتح الـ sidebar
+  toggle.addEventListener('click', () => openSidebar());
+
+  // إغلاق عبر overlay
+  overlay.addEventListener('click', () => closeSidebar());
+
+  // إغلاق عبر زر X
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => closeSidebar());
+  }
+
+  // إغلاق عبر Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && sidebar.classList.contains('open')) {
+      closeSidebar();
+    }
   });
 }
 
+function openSidebar() {
+  const sidebar = document.getElementById('app-sidebar');
+  const overlay = document.getElementById('sidebar-overlay');
+  const toggle = document.getElementById('sidebar-toggle');
+  if (!sidebar || !overlay) return;
+  sidebar.classList.add('open');
+  overlay.classList.add('visible');
+  overlay.setAttribute('aria-hidden', 'false');
+  if (toggle) {
+    toggle.setAttribute('aria-expanded', 'true');
+    toggle.setAttribute('aria-label', 'إغلاق القائمة');
+  }
+  // Focus trap: نقل التركيز لأول زر في الـ sidebar
+  setTimeout(() => {
+    const firstBtn = sidebar.querySelector('.sidebar-nav-btn, .sidebar-close');
+    if (firstBtn) firstBtn.focus();
+  }, 300);
+}
+
+function closeSidebar() {
+  const sidebar = document.getElementById('app-sidebar');
+  const overlay = document.getElementById('sidebar-overlay');
+  const toggle = document.getElementById('sidebar-toggle');
+  if (!sidebar || !overlay) return;
+  // لا تُغلق على الشاشات الكبيرة
+  if (window.matchMedia('(min-width: 1024px)').matches) return;
+  sidebar.classList.remove('open');
+  overlay.classList.remove('visible');
+  overlay.setAttribute('aria-hidden', 'true');
+  if (toggle) {
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-label', 'فتح القائمة');
+  }
+}
+
 function navigateTo(section) {
-  const btn = document.querySelector(`.nav-btn[data-section="${section}"]`);
+  const btn = document.querySelector(`.sidebar-nav-btn[data-section="${section}"], .nav-btn[data-section="${section}"]`);
   if (btn) btn.click();
   return false;
 }

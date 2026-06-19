@@ -80,7 +80,7 @@ const SUPABASE_ANON_KEY = 'YOUR-ANON-PUBLIC-KEY';
 - ✅ **CSP**: Content Security Policy يمنع XSS
 - ✅ **`rel="noopener noreferrer"`**: على كل الروابط الخارجية
 - ✅ **`escapeHtml`**: كل النصوص تُهرب قبل العرض
-- ✅ **Session آمنة**: عبر httpOnly cookies من Supabase (لا token في localStorage)
+- ✅ **جلسة آمنة**: عبر Supabase Auth مع RLS policies (token في localStorage لكن الصلاحيات تُدار عبر سياسات قاعدة البيانات)
 - ✅ **لا GitHub token مكشوف**: تم استبدال نظام GitHub API بـ Supabase
 
 ## 📁 بنية المشروع
@@ -135,7 +135,7 @@ node scripts/json-to-sql.js > supabase/seed.sql
 | XSS عبر innerHTML | escapeHtml على كل النصوص |
 | لا CSP | CSP + SRI محسّن |
 | صور 1.5MB للشعار | صور 130KB (92% تقليل) |
-| `escape()`/`unescape()` deprecated | `TextEncoder`/`TextDecoder` |
+| `escape()`/`unescape()` deprecated | محذوفة (لم تعد ضرورية) |
 | لا ARIA | ARIA على النوافذ والأزرار |
 | لا favicon | favicon + apple-touch-icon |
 | لا og:image | Open Graph كامل + Twitter Card |

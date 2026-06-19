@@ -51,6 +51,71 @@ const FAMILY_NAMES = {
     'bookshelf': 'رف كتب', 'stairs-spiral': 'درج حلزوني', 'stairs-straight': 'درج مستقيم',
     'gate': 'بوابة حديد', 'door': 'باب حديد', 'railing': 'درابزين حديد', 'balcony': 'شرفة حديد',
     'window': 'نافذة حديد', 'plant-stand': 'حامل نباتات', 'desk': 'طاولة مكتب', 'mirror': 'مرآة بإطار حديد'
+    // === مفاتيح مضافة آلياً من HTML ===
+    admin_title: 'لوحة المسؤول',
+    finish_hammered: 'مطرق',
+    finish_textured: 'مخمل',
+    float_wa: 'واتساب',
+    lang_desc: 'اختر لغة العرض المفضلة لديك',
+    lang_setting: 'تغيير اللغة',
+    order_notes_label: 'ملاحظات إضافية',
+    orders_desc: 'فصّل على ذوقك – تصميمك الخاص، نصنعه بواقع صلب. أكثر من 20 فئة و60 خياراً متنوعاً',
+    orders_title: 'الطلبات والتصنيع',
+    promo_coffee_desc: 'دعمكم يلهمنا لنقدم المزيد - محفظة ماي كاش: 401696711',
+    promo_coffee_title: 'اعجبك شغلنا؟ اشترِ لنا قهوة!',
+    promo_contact_now: 'تواصل الآن',
+    promo_copy_fb: 'نسخ النص كاملاً',
+    promo_cta_copy: 'نسخ الرقم: 0115192500',
+    promo_cta_desc: 'إذا أردت موقعاً مماثلاً لمتجرك أو مشروعك، تواصل معي الآن!',
+    promo_cta_title: 'تم بناء هذين الموقعين من قبل غيلان بن عقبة',
+    promo_cta_whatsapp: 'تواصل عبر واتساب',
+    promo_dev_bio: 'مطور مواقع ويب محترف متخصص في تصميم وتطوير المواقع الإلكترونية للمتاجر والمشاريع التجارية. أؤمن بأن كل مشروع يستحق وجوداً رقمياً احترافياً يعكس هويته ويوسع نطاق وصوله.',
+    promo_dev_title: 'المطور: غيلان بن عقبة',
+    promo_fb_hint: '💡 انسخ النص أعلاه وانشره في قروبات الفيسبوك المحلية في منطقتك',
+    promo_fb_sub: 'انسخ هذا النص وانشره في القروبات المحلية',
+    promo_fb_title: 'نص الترويج لفيسبوك',
+    promo_off1_desc: 'موقع كامل لعرض منتجاتك وخدماتك مع إمكانية التواصل المباشر',
+    promo_off1_title: 'مواقع متاجر إلكترونية',
+    promo_off2_desc: 'موقعك يعمل بشكل ممتاز على الهاتف والتابلت والكمبيوتر',
+    promo_off2_title: 'تصميم متجاوب',
+    promo_off3_desc: 'مواقع سريعة التحميل ومحسنة لمحركات البحث',
+    promo_off3_title: 'سرعة وأداء عالي',
+    promo_off4_desc: 'تصميم عصري وجذاب يعكس هوية مشروعك',
+    promo_off4_title: 'تصميم احترافي',
+    promo_off5_desc: 'إدارة المحتوى والمنتجات بسهولة تامة',
+    promo_off5_title: 'لوحة تحكم سهلة',
+    promo_off6_desc: 'ربط مباشر مع واتساب للتواصل مع العملاء',
+    promo_off6_title: 'تكامل واتساب',
+    promo_offer_title: 'ماذا أقدم؟',
+    promo_p4_desc: 'الموقع الإلكتروني يوسع نطاق وصولك ليشمل كل السودان وخارجه. لا تقتصر على العملاء في منطقتك فقط.',
+    promo_p4_title: 'وصول بلا حدود جغرافية',
+    promo_proof_desc: 'الموقعان الموضحان أعلاه هما مشروعان حقيقيان تم تصميمهما وتطويرهما بالكامل من قبل المطور غيلان بن عقبة. مجمع الحياة هو متجر إلكترونيات متكامل في دنقلا، وورشة عبادة للحدادة هي ورشة أعمال حديدية في الخرطوم. كلا الموقعين يعملان حالياً ويستخدمهما العملاء.',
+    promo_proof_title: 'الدليل على الجودة',
+    promo_s1_tag1: 'متجر إلكترونيات',
+    promo_s1_tag2: 'طباعة وتصوير',
+    promo_s1_tag3: 'تحميل برامج',
+    promo_s1_tag4: 'أفلام ومسلسلات',
+    promo_s1_tag5: 'ألعاب',
+    promo_s1_tag6: 'سوفت وير',
+    promo_s1_tag7: 'تخطي FRP',
+    promo_s2_tag1: 'أبواب حديد',
+    promo_s2_tag2: 'أسرّة',
+    promo_s2_tag3: 'بوابات',
+    promo_s2_tag4: 'درابزين',
+    promo_s2_tag5: 'سلالم',
+    promo_s2_tag6: 'مظلات',
+    promo_s2_tag7: 'تفصيل حسب الطلب',
+    promo_store1_desc: 'مجمع الحياة هو متجر متكامل للإلكترونيات والخدمات الرقمية في دنقلا، السودان. يقدم الموقع تجربة تسوق احترافية تشمل عرض المنتجات الإلكترونية المتنوعة من هواتف وشواحن وسماعات وإكسسوارات، بالإضافة إلى خدمات متعددة مثل الطباعة والتصوير وتحميل البرامج والأفلام والمسلسلات وتحميل لعبة Genshin Impact وسوفت وير للأجهزة وتخطي حساب جوجل.',
+    promo_store1_location: 'مجمع الحياة - دنقلا، السودان',
+    promo_store1_subtitle: 'متجر إلكترونيات وخدمات رقمية',
+    promo_store1_title: 'مجمع الحياة',
+    promo_store2_desc: 'ورشة عبادة عبد الحفيظ للحدادة هي ورشة متخصصة في تصنيع أعمال حديدية متقنة بأجود الخامات في السودان. يقدم الموقع عرضاً احترافياً للمنتجات الجاهزة والمصنوعة حسب الطلب من أبواب حديد وأسرّة ومظلات وبوابات ودرابزين وسلالم، مع حاسبة تكلفة مبدئية ونظام طلبات متكامل عبر واتساب.',
+    promo_store2_location: 'واتساب: 0115192500',
+    promo_store2_subtitle: 'أعمال حديدية احترافية',
+    promo_store2_title: 'ورشة عبادة عبد الحفيظ للحدادة',
+    theme_desc: 'اختر المظهر الذي يناسبك',
+    theme_setting: 'تغيير المظهر',
+
   },
   en: {
     'bed-classic': 'Classic Iron Bed', 'bed-royal': 'Royal Iron Bed', 'bed-bunk': 'Bunk Iron Bed',
@@ -458,6 +523,71 @@ const translations = {
     footer_built_by: 'This website was built by',
     loading_products: 'Loading products...',
     error_loading: 'Failed to load products. Check connection.'
+    // === Auto-added keys from HTML ===
+    admin_title: 'لوحة المسؤول',
+    finish_hammered: 'مطرق',
+    finish_textured: 'مخمل',
+    float_wa: 'واتساب',
+    lang_desc: 'اختر لغة العرض المفضلة لديك',
+    lang_setting: 'تغيير اللغة',
+    order_notes_label: 'ملاحظات إضافية',
+    orders_desc: 'فصّل على ذوقك – تصميمك الخاص، نصنعه بواقع صلب. أكثر من 20 فئة و60 خياراً متنوعاً',
+    orders_title: 'الطلبات والتصنيع',
+    promo_coffee_desc: 'دعمكم يلهمنا لنقدم المزيد - محفظة ماي كاش: 401696711',
+    promo_coffee_title: 'اعجبك شغلنا؟ اشترِ لنا قهوة!',
+    promo_contact_now: 'تواصل الآن',
+    promo_copy_fb: 'نسخ النص كاملاً',
+    promo_cta_copy: 'نسخ الرقم: 0115192500',
+    promo_cta_desc: 'إذا أردت موقعاً مماثلاً لمتجرك أو مشروعك، تواصل معي الآن!',
+    promo_cta_title: 'تم بناء هذين الموقعين من قبل غيلان بن عقبة',
+    promo_cta_whatsapp: 'تواصل عبر واتساب',
+    promo_dev_bio: 'مطور مواقع ويب محترف متخصص في تصميم وتطوير المواقع الإلكترونية للمتاجر والمشاريع التجارية. أؤمن بأن كل مشروع يستحق وجوداً رقمياً احترافياً يعكس هويته ويوسع نطاق وصوله.',
+    promo_dev_title: 'المطور: غيلان بن عقبة',
+    promo_fb_hint: '💡 انسخ النص أعلاه وانشره في قروبات الفيسبوك المحلية في منطقتك',
+    promo_fb_sub: 'انسخ هذا النص وانشره في القروبات المحلية',
+    promo_fb_title: 'نص الترويج لفيسبوك',
+    promo_off1_desc: 'موقع كامل لعرض منتجاتك وخدماتك مع إمكانية التواصل المباشر',
+    promo_off1_title: 'مواقع متاجر إلكترونية',
+    promo_off2_desc: 'موقعك يعمل بشكل ممتاز على الهاتف والتابلت والكمبيوتر',
+    promo_off2_title: 'تصميم متجاوب',
+    promo_off3_desc: 'مواقع سريعة التحميل ومحسنة لمحركات البحث',
+    promo_off3_title: 'سرعة وأداء عالي',
+    promo_off4_desc: 'تصميم عصري وجذاب يعكس هوية مشروعك',
+    promo_off4_title: 'تصميم احترافي',
+    promo_off5_desc: 'إدارة المحتوى والمنتجات بسهولة تامة',
+    promo_off5_title: 'لوحة تحكم سهلة',
+    promo_off6_desc: 'ربط مباشر مع واتساب للتواصل مع العملاء',
+    promo_off6_title: 'تكامل واتساب',
+    promo_offer_title: 'ماذا أقدم؟',
+    promo_p4_desc: 'الموقع الإلكتروني يوسع نطاق وصولك ليشمل كل السودان وخارجه. لا تقتصر على العملاء في منطقتك فقط.',
+    promo_p4_title: 'وصول بلا حدود جغرافية',
+    promo_proof_desc: 'الموقعان الموضحان أعلاه هما مشروعان حقيقيان تم تصميمهما وتطويرهما بالكامل من قبل المطور غيلان بن عقبة. مجمع الحياة هو متجر إلكترونيات متكامل في دنقلا، وورشة عبادة للحدادة هي ورشة أعمال حديدية في الخرطوم. كلا الموقعين يعملان حالياً ويستخدمهما العملاء.',
+    promo_proof_title: 'الدليل على الجودة',
+    promo_s1_tag1: 'متجر إلكترونيات',
+    promo_s1_tag2: 'طباعة وتصوير',
+    promo_s1_tag3: 'تحميل برامج',
+    promo_s1_tag4: 'أفلام ومسلسلات',
+    promo_s1_tag5: 'ألعاب',
+    promo_s1_tag6: 'سوفت وير',
+    promo_s1_tag7: 'تخطي FRP',
+    promo_s2_tag1: 'أبواب حديد',
+    promo_s2_tag2: 'أسرّة',
+    promo_s2_tag3: 'بوابات',
+    promo_s2_tag4: 'درابزين',
+    promo_s2_tag5: 'سلالم',
+    promo_s2_tag6: 'مظلات',
+    promo_s2_tag7: 'تفصيل حسب الطلب',
+    promo_store1_desc: 'مجمع الحياة هو متجر متكامل للإلكترونيات والخدمات الرقمية في دنقلا، السودان. يقدم الموقع تجربة تسوق احترافية تشمل عرض المنتجات الإلكترونية المتنوعة من هواتف وشواحن وسماعات وإكسسوارات، بالإضافة إلى خدمات متعددة مثل الطباعة والتصوير وتحميل البرامج والأفلام والمسلسلات وتحميل لعبة Genshin Impact وسوفت وير للأجهزة وتخطي حساب جوجل.',
+    promo_store1_location: 'مجمع الحياة - دنقلا، السودان',
+    promo_store1_subtitle: 'متجر إلكترونيات وخدمات رقمية',
+    promo_store1_title: 'مجمع الحياة',
+    promo_store2_desc: 'ورشة عبادة عبد الحفيظ للحدادة هي ورشة متخصصة في تصنيع أعمال حديدية متقنة بأجود الخامات في السودان. يقدم الموقع عرضاً احترافياً للمنتجات الجاهزة والمصنوعة حسب الطلب من أبواب حديد وأسرّة ومظلات وبوابات ودرابزين وسلالم، مع حاسبة تكلفة مبدئية ونظام طلبات متكامل عبر واتساب.',
+    promo_store2_location: 'واتساب: 0115192500',
+    promo_store2_subtitle: 'أعمال حديدية احترافية',
+    promo_store2_title: 'ورشة عبادة عبد الحفيظ للحدادة',
+    theme_desc: 'اختر المظهر الذي يناسبك',
+    theme_setting: 'تغيير المظهر',
+
   }
 };
 
@@ -1635,6 +1765,96 @@ function setupSettings() {
   }
 }
 
+// ============ أزرار قسم الترويج ============
+function setupPromoActions() {
+  // زر نسخ رقم الهاتف
+  const copyPhoneBtn = document.getElementById('promo-copy-phone');
+  if (copyPhoneBtn) {
+    copyPhoneBtn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText('0115192500');
+        showToast(currentLang === 'ar' ? 'تم نسخ الرقم' : 'Phone copied');
+      } catch (e) {
+        showToast(currentLang === 'ar' ? 'تعذّر النسخ' : 'Copy failed', true);
+      }
+    });
+  }
+
+  // نص الترويج لفيسبوك - توليد ديناميكي حسب اللغة
+  const fbText = document.getElementById('promo-fb-text');
+  if (fbText) {
+    const generateFbText = () => {
+      if (currentLang === 'ar') {
+        return `🔥 هل تبحث عن حداد محترف في الخرطوم؟
+
+ورشة عبادة عبد الحفيظ للحدادة - تصنيع جميع الأعمال الحديدية:
+✅ أبواب حديد (خارجية وداخلية)
+✅ أسرّة حديد بتصاميم كلاسيكية وعصرية
+✅ بوابات وشرفات ودرابزين
+✅ سلالم حلزونية ومستقيمة
+✅ مظلات وشقق حديد
+✅ تفصيل حسب الطلب مع ضمان الجودة
+
+📍 الموقع: الخناق - الخرطوم
+📞 للتواصل: 0115192500
+💬 واتساب: https://wa.me/249115192500
+
+نوفر خدمة التوصيل والتركيب داخل الخرطوم. جودة عالية وأسعار منافسة.تفصيل حسب رغبتك مع إمكانية اختيار الألوان والتشطيبات.
+
+#ورشة_حدادة #الخرطوم #حدادة_السودان #أبواب_حديد #أسرّة #بوابات`;
+      } else {
+        return `🔥 Looking for a professional blacksmith in Khartoum?
+
+Obada Abdul Hafeez Iron Workshop - Manufacturing all iron works:
+✅ Iron doors (exterior and interior)
+✅ Iron beds with classic and modern designs
+✅ Gates, balconies, and railings
+✅ Spiral and straight staircases
+✅ Canopies and iron structures
+✅ Custom fabrication with quality guarantee
+
+📍 Location: Al-Khunaq - Khartoum
+📞 Contact: 0115192500
+💬 WhatsApp: https://wa.me/249115192500
+
+We offer delivery and installation within Khartoum. High quality and competitive prices.
+
+#ironworkshop #khartoum #sudan_blacksmith #iron_doors #beds #gates`;
+      }
+    };
+    fbText.textContent = generateFbText();
+    // تحديث النص عند تغيير اللغة
+    const originalApplyLanguage = applyLanguage;
+    window.applyLanguage = function(lang) {
+      originalApplyLanguage(lang);
+      const el = document.getElementById('promo-fb-text');
+      if (el) el.textContent = generateFbText();
+    };
+  }
+
+  // زر نسخ نص فيسبوك
+  const copyFbBtn = document.getElementById('promo-copy-fb');
+  if (copyFbBtn) {
+    copyFbBtn.addEventListener('click', async () => {
+      const text = document.getElementById('promo-fb-text')?.textContent || '';
+      if (!text) return;
+      try {
+        await navigator.clipboard.writeText(text);
+        showToast(currentLang === 'ar' ? 'تم نسخ النص' : 'Text copied');
+      } catch (e) {
+        // Fallback
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); showToast(currentLang === 'ar' ? 'تم نسخ النص' : 'Text copied'); }
+        catch (e2) { showToast(currentLang === 'ar' ? 'تعذّر النسخ' : 'Copy failed', true); }
+        document.body.removeChild(ta);
+      }
+    });
+  }
+}
+
 // ============ ربط أحداث المسؤول ============
 function setupAdminEvents() {
   // تسجيل الدخول
@@ -1745,6 +1965,7 @@ async function init() {
   setupSettings();
   setupAdminEvents();
   setupImagePreview();
+  setupPromoActions();
 
   // فحص جلسة Supabase الحالية
   await checkExistingSession();

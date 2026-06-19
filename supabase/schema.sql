@@ -10,18 +10,16 @@ CREATE TABLE IF NOT EXISTS products (
   name_en      TEXT,
   description  TEXT,
   description_en TEXT,
-  price        BIGINT,                       -- NULL = "السعر عند التواصل" (لمنتجات الطلبات)
-  image_url    TEXT NOT NULL,                -- إما مسار نسبي (images/...) أو رابط Supabase Storage
+  price        BIGINT CHECK (price IS NULL OR price >= 0),
+  image_url    TEXT NOT NULL,
   category     TEXT NOT NULL CHECK (category IN ('store','orders')),
-  -- حقول خاصة بمنتجات الطلبات (family + variants):
   family       TEXT,
   color_key    TEXT,
-  color_hex    TEXT,
+  color_hex    TEXT CHECK (color_hex IS NULL OR color_hex ~ '^#[0-9a-fA-F]{3,8}$'),
   color_name   TEXT,
   color_name_en TEXT,
   cat_group    TEXT,
-  -- تتبع:
-  sort_order   INTEGER NOT NULL DEFAULT 0,
+  sort_order   INTEGER NOT NULL DEFAULT 0 CHECK (sort_order >= 0),
   is_active    BOOLEAN NOT NULL DEFAULT TRUE,
   created_at   TIMESTAMPTZ NOT NULL DEFAULT now(),
   updated_at   TIMESTAMPTZ NOT NULL DEFAULT now()
@@ -42,20 +40,22 @@ CREATE POLICY "public_read_active_products"
   USING (is_active = TRUE);
 
 -- عمليات الكتابة (INSERT/UPDATE/DELETE) للمسؤول الموثّق فقط
+-- ✅ تقييدها ببريد المسؤول المعتمد لمنع أي مستخدم آخر من التعديل
 CREATE POLICY "admin_insert_products"
   ON products FOR INSERT
   TO authenticated
-  WITH CHECK (TRUE);
+  WITH CHECK (auth.email() = 'ghanim.workshop@protonmail.com');
 
 CREATE POLICY "admin_update_products"
   ON products FOR UPDATE
   TO authenticated
-  USING (TRUE) WITH CHECK (TRUE);
+  USING (auth.email() = 'ghanim.workshop@protonmail.com')
+  WITH CHECK (auth.email() = 'ghanim.workshop@protonmail.com');
 
 CREATE POLICY "admin_delete_products"
   ON products FOR DELETE
   TO authenticated
-  USING (TRUE);
+  USING (auth.email() = 'ghanim.workshop@protonmail.com');
 
 -- ============ 3) Storage Bucket للصور ============
 INSERT INTO storage.buckets (id, name, public)
@@ -72,17 +72,17 @@ CREATE POLICY "public_read_product_images"
 CREATE POLICY "admin_upload_product_images"
   ON storage.objects FOR INSERT
   TO authenticated
-  WITH CHECK (bucket_id = 'product-images');
+  WITH CHECK (bucket_id = 'product-images' AND auth.email() = 'ghanim.workshop@protonmail.com');
 
 CREATE POLICY "admin_update_product_images"
   ON storage.objects FOR UPDATE
   TO authenticated
-  USING (bucket_id = 'product-images');
+  USING (bucket_id = 'product-images' AND auth.email() = 'ghanim.workshop@protonmail.com');
 
 CREATE POLICY "admin_delete_product_images"
   ON storage.objects FOR DELETE
   TO authenticated
-  USING (bucket_id = 'product-images');
+  USING (bucket_id = 'product-images' AND auth.email() = 'ghanim.workshop@protonmail.com');
 
 -- ============ 4) Trigger لتحديث updated_at تلقائياً ============
 CREATE OR REPLACE FUNCTION set_updated_at()

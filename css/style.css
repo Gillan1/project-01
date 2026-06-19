@@ -291,14 +291,15 @@ body {
     position: fixed;
     top: 0;
     bottom: 0;
-    /* على RTL يفتح من اليمين، على LTR من اليسار */
-    inset-inline-end: 0;
-    inset-inline-start: auto;
+    /* في RTL: inset-inline-start = right → الـ sidebar على اليمين */
+    /* في LTR: inset-inline-start = left → الـ sidebar على اليسار */
+    inset-inline-start: 0;
+    inset-inline-end: auto;
     width: 280px;
     max-width: 85vw;
     background: var(--bg-card);
-    border-inline-start: 1px solid var(--border-color);
-    box-shadow: -4px 0 24px rgba(0, 0, 0, 0.15);
+    border-inline-end: 1px solid var(--border-color);
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.15);
     z-index: 1200;
     display: flex;
     flex-direction: column;
@@ -308,12 +309,14 @@ body {
 }
 
 /* على الموبايل: الـ sidebar مخفي افتراضياً (مُزاح خارج الشاشة) */
+/* في RTL: inset-inline-start=0 → right=0، لذا نُزاح لليمين (translateX positive) */
+/* في LTR: inset-inline-start=0 → left=0، لذا نُزاح لليسار (translateX negative) */
 @media (max-width: 1023px) {
     .app-sidebar {
-        transform: translateX(100%); /* RTL: يُزاح لليمين خارج الشاشة */
+        transform: translateX(-100%); /* LTR default: يُزاح لليسار خارج الشاشة */
     }
-    [dir="ltr"] .app-sidebar {
-        transform: translateX(-100%); /* LTR: يُزاح لليسار */
+    [dir="rtl"] .app-sidebar {
+        transform: translateX(100%); /* RTL: يُزاح لليمين خارج الشاشة */
     }
     .app-sidebar.open {
         transform: translateX(0) !important;
@@ -324,7 +327,7 @@ body {
 @media (min-width: 1024px) {
     .app-sidebar {
         transform: translateX(0) !important;
-        box-shadow: -2px 0 12px rgba(0, 0, 0, 0.08);
+        box-shadow: 2px 0 12px rgba(0, 0, 0, 0.08);
     }
 }
 
@@ -510,9 +513,11 @@ body {
 }
 
 /* إزاحة محتوى الصفحة على الـ desktop لتوفير مساحة للـ sidebar الثابت */
+/* في RTL: sidebar على اليمين → padding-inline-start (right) لإزاحة المحتوى لليسار */
+/* في LTR: sidebar على اليسار → padding-inline-start (left) لإزاحة المحتوى لليمين */
 @media (min-width: 1024px) {
     body.has-sidebar {
-        padding-inline-end: 280px;
+        padding-inline-start: 280px;
     }
 }
 

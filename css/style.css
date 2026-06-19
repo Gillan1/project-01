@@ -250,6 +250,8 @@ body {
 /* ==========================================
    Sidebar Navigation (القائمة الجانبية)
    ========================================== */
+
+/* زر الـ hamburger على الموبايل */
 .sidebar-toggle {
     position: fixed;
     top: 16px;
@@ -260,11 +262,11 @@ body {
     border-radius: 10px;
     padding: 10px;
     cursor: pointer;
-    display: flex;
+    display: none; /* يظهر فقط على الموبايل عبر media query */
     flex-direction: column;
     gap: 5px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    transition: var(--transition);
+    transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
 .sidebar-toggle:hover {
@@ -281,54 +283,72 @@ body {
     height: 3px;
     background: var(--accent);
     border-radius: 2px;
-    transition: var(--transition);
+    transition: background-color 0.2s ease;
 }
 
+/* الـ sidebar نفسه - مثبت على desktop، drawer على mobile */
 .app-sidebar {
     position: fixed;
     top: 0;
-    inset-inline-start: 0;
     bottom: 0;
-    width: 300px;
+    /* على RTL يفتح من اليمين، على LTR من اليسار */
+    inset-inline-end: 0;
+    inset-inline-start: auto;
+    width: 280px;
     max-width: 85vw;
     background: var(--bg-card);
-    border-inline-end: 1px solid var(--border-color);
-    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.3);
+    border-inline-start: 1px solid var(--border-color);
+    box-shadow: -4px 0 24px rgba(0, 0, 0, 0.15);
     z-index: 1200;
-    transform: translateX(-100%);
-    transform: translateX(calc(-100% * var(--rtl-flip, 0)));
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     flex-direction: column;
     overflow-y: auto;
+    overflow-x: hidden;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* RTL: الـ sidebar يفتح من اليمين */
-[dir="rtl"] .app-sidebar {
-    inset-inline-start: auto;
-    inset-inline-end: 0;
-    transform: translateX(100%);
+/* على الموبايل: الـ sidebar مخفي افتراضياً (مُزاح خارج الشاشة) */
+@media (max-width: 1023px) {
+    .app-sidebar {
+        transform: translateX(100%); /* RTL: يُزاح لليمين خارج الشاشة */
+    }
+    [dir="ltr"] .app-sidebar {
+        transform: translateX(-100%); /* LTR: يُزاح لليسار */
+    }
+    .app-sidebar.open {
+        transform: translateX(0) !important;
+    }
 }
 
-.app-sidebar.open {
-    transform: translateX(0);
+/* على الـ desktop: الـ sidebar ثابت دائماً */
+@media (min-width: 1024px) {
+    .app-sidebar {
+        transform: translateX(0) !important;
+        box-shadow: -2px 0 12px rgba(0, 0, 0, 0.08);
+    }
 }
 
 .sidebar-overlay {
     position: fixed;
     inset: 0;
     background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
     z-index: 1150;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
+    display: none; /* يظهر فقط على الموبايل */
 }
 
-.sidebar-overlay.visible {
-    opacity: 1;
-    visibility: visible;
+@media (max-width: 1023px) {
+    .sidebar-overlay {
+        display: block;
+    }
+    .sidebar-overlay.visible {
+        opacity: 1;
+        visibility: visible;
+    }
 }
 
 .sidebar-header {
@@ -338,6 +358,7 @@ body {
     padding: 20px 16px;
     border-bottom: 1px solid var(--border-color);
     background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
+    flex-shrink: 0;
 }
 
 .sidebar-logo {
@@ -381,8 +402,15 @@ body {
     cursor: pointer;
     padding: 4px 8px;
     border-radius: 6px;
-    transition: var(--transition);
+    transition: background-color 0.2s ease, color 0.2s ease;
     flex-shrink: 0;
+    display: none; /* يظهر فقط على الموبايل */
+}
+
+@media (max-width: 1023px) {
+    .sidebar-close {
+        display: block;
+    }
 }
 
 .sidebar-close:hover {
@@ -395,7 +423,7 @@ body {
     padding: 12px 8px;
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 2px;
     overflow-y: auto;
 }
 
@@ -412,25 +440,28 @@ body {
     font-weight: 600;
     border-radius: 8px;
     cursor: pointer;
-    transition: var(--transition);
+    transition: background-color 0.2s ease, color 0.2s ease;
     text-align: start;
     width: 100%;
+    text-decoration: none;
 }
 
 .sidebar-nav-btn:hover {
     background: var(--badge-bg);
     color: var(--accent);
-    transform: translateX(2px);
-}
-
-[dir="rtl"] .sidebar-nav-btn:hover {
-    transform: translateX(-2px);
 }
 
 .sidebar-nav-btn.active {
     background: var(--accent);
     color: #fff;
-    box-shadow: 0 2px 8px rgba(212, 175, 55, 0.3);
+}
+
+[dir="rtl"] .sidebar-nav-btn.active {
+    box-shadow: inset 4px 0 0 rgba(255, 255, 255, 0.3);
+}
+
+[dir="ltr"] .sidebar-nav-btn.active {
+    box-shadow: inset -4px 0 0 rgba(255, 255, 255, 0.3);
 }
 
 .nav-icon {
@@ -451,6 +482,7 @@ body {
     padding: 16px;
     border-top: 1px solid var(--border-color);
     background: var(--bg-secondary);
+    flex-shrink: 0;
 }
 
 .sidebar-contact {
@@ -463,7 +495,7 @@ body {
     text-decoration: none;
     font-weight: 600;
     font-size: 0.9rem;
-    transition: var(--transition);
+    transition: color 0.2s ease;
 }
 
 .sidebar-contact a:hover {
@@ -477,38 +509,18 @@ body {
     font-size: 0.75rem;
 }
 
-/* على الشاشات الكبيرة: الـ sidebar مثبت دائماً */
+/* إزاحة محتوى الصفحة على الـ desktop لتوفير مساحة للـ sidebar الثابت */
 @media (min-width: 1024px) {
-    .sidebar-toggle {
-        display: none;
-    }
-
-    .app-sidebar {
-        transform: translateX(0);
-        box-shadow: 2px 0 12px rgba(0, 0, 0, 0.15);
-        width: 260px;
-    }
-
-    .sidebar-overlay {
-        display: none !important;
-    }
-
-    .sidebar-close {
-        display: none;
-    }
-
-    /* إزاحة المحتوى لتوفير مساحة للـ sidebar */
     body.has-sidebar {
-        padding-inline-start: 260px;
-    }
-
-    .main-header {
-        margin-inline-start: 0;
+        padding-inline-end: 280px;
     }
 }
 
-/* على الموبايل: الـ sidebar يطفو فوق المحتوى */
+/* على الموبايل: زر الـ hamburger ظاهر، والمحتوى بدون padding */
 @media (max-width: 1023px) {
+    .sidebar-toggle {
+        display: flex;
+    }
     .main-header {
         padding-inline-start: 70px;
     }
